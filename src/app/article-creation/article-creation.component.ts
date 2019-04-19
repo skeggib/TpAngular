@@ -16,7 +16,7 @@ export class ArticleCreationComponent implements OnInit {
     this.articleForm = this.fb.group({
       title: ['', Validators.required ],
       content : ['', Validators.required ],
-      authors : ['', Validators.required ],
+      author : ['', Validators.required ],
     });
   }
 
