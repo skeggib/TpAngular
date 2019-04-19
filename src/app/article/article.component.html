@@ -1,0 +1,6 @@
+<div *ngIf='this.article !== undefined'>
+  <h3>{{this.article.title}}</h3>
+  <p>{{this.article.author}}</p>
+  <p>{{this.article.content}}</p>
+  <button (click)="this.delete()">Delete</button>
+</div>

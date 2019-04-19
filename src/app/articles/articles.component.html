@@ -1,0 +1,13 @@
+<p>Search: <input type="text" class="form-control" (input)="onSearchChange($event.target.value)"></p>
+<ul *ngIf="this.articles !== undefined && this.articles.length > 0">
+  <li 
+    *ngFor="let article of this.articles; let i = index"
+    class="{{ i%2==0 ? 'even' : 'odd' }}">
+    <a [routerLink]="['/articles', this.article.id]">
+      <app-article
+        [article]="this.article"
+        (deletedArticle)="this.delete($event)"
+      ></app-article>
+    </a>
+  </li>
+</ul>
