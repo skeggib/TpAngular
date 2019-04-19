@@ -2,8 +2,8 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Article } from './Article';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-
 import 'rxjs/add/operator/map';
+import { filterByTerm } from './articleFilter';
 
 @Injectable()
 export class ArticleService {
@@ -31,8 +31,7 @@ export class ArticleService {
 
   searchArticles(term: string): Observable<Article[]> {
     return this.getAllArticles().map(articles =>
-      articles.filter(article =>
-        article.title.toLowerCase().indexOf(term.toLowerCase()) !== -1));
+      articles.filter(article => filterByTerm(article, term)));
   }
 
 }
