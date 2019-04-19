@@ -3,7 +3,7 @@ import { Article } from './Article';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { filterByTerm } from './articleFilter';
+import { filterByTerms } from './articleFilter';
 
 @Injectable()
 export class ArticleService {
@@ -29,9 +29,9 @@ export class ArticleService {
     return this.http.get<Article>('http://localhost:3000/articles/' + id);
   }
 
-  searchArticles(term: string): Observable<Article[]> {
+  searchArticles(terms: string): Observable<Article[]> {
     return this.getAllArticles().map(articles =>
-      articles.filter(article => filterByTerm(article, term)));
+      articles.filter(article => filterByTerms(article, terms.split(' ').map(term => term.trim()).filter(term => term.length > 0))));
   }
 
 }
