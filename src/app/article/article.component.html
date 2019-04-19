@@ -1,5 +1,5 @@
 <div *ngIf='this.article !== undefined'>
-  <h3>{{this.article.title}}</h3>
+  <a [routerLink]="['/articles', this.article.id]"><h3>{{this.article.title}}</h3></a>
   <p>{{this.article.author}}</p>
   <p>{{this.article.content}}</p>
   <button (click)="this.delete()">Delete</button>
